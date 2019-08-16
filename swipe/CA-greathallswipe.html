@@ -47,6 +47,25 @@
       -webkit-align-items: center;
       align-items: center;
     }
+    
+    .swiper-pagination-bullet {
+      width: 14px;
+      height: 14px;
+      text-align: center;
+      line-height: 14px;
+      font-size: 12px;
+      background: #fff;
+      opacity: 0.7;
+      margin: 0px 6px !important;
+      transition: width 0.2s, height 0.2s, opacity 0.2s;
+    }
+
+    .swiper-pagination-bullet:hover {
+      opacity: 0.9;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -58,6 +77,7 @@
       <div class="swiper-slide" style="background-image: url('img/gh/gh3.JPG')"></div>
       <div class="swiper-slide" style="background-image: url('img/gh/gh4.JPG')"></div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
 
   <!-- Swiper JS -->
@@ -65,7 +85,21 @@
 
   <!-- Initialize Swiper -->
   <script>
-    var swiper = new Swiper('.swiper-container');
+
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + '</span>';
+        },
+      },
+    });
   </script>
 </body>
 </html>
